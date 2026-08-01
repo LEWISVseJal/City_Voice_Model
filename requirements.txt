@@ -1,0 +1,10 @@
+flask
+flask-cors
+gunicorn
+numpy
+onnx
+onnxruntime
+pillow
+torch
+torchvision
+ultralytics

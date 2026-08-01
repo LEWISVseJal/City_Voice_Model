@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Civic AI Detector</title>
+</head>
+
+<body style="font-family: Arial; text-align:center; margin-top:40px;">
+
+    <h2>🚧 Civic Issue Detector</h2>
+
+    <!-- <form method="POST" enctype="multipart/form-data"> -->
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+
+        <input type="file" name="file" required>
+
+        <br><br>
+
+        <button type="submit">Predict</button>
+
+    </form>
+
+    <!-- {% if filename %}
+
+        <h3>Uploaded Image:</h3>
+
+        <img src="{{ url_for('uploaded_file', filename=filename) }}"
+             width="300">
+
+    {% endif %} -->
+    {% if image_data %}
+    <h3>Uploaded Image:</h3>
+    <img
+        src="data:image/jpeg;base64,{{ image_data }}"
+        width="300"
+    >
+{% endif %}
+
+    {% if prediction %}
+
+        <h3 style="color:green;">
+            Category: {{ main_category }}
+        </h3>
+
+        <h4>
+            Confidence: {{ confidence }}%
+        </h4>
+
+        {% if road_subtype %}
+
+            <h3 style="color:#cc0000;">
+                Detected Type: {{ road_subtype }}
+            </h3>
+
+        {% endif %}
+
+        <p style="font-size:18px; color:#333;">
+            <b>Description:</b> {{ description }}
+        </p>
+
+    {% endif %}
+
+</body>
+</html>
